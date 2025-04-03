@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子名片</title>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* 名片容器 */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* 头像 */
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            margin: -60px auto 20px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 基础信息 */
+        .name {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .position {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .company {
+            text-align: center;
+            color: #3498db;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* 详细信息 */
+        .info-list {
+            list-style: none;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .info-item i {
+            width: 30px;
+            text-align: center;
+            margin-right: 15px;
+            color: #3498db;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 25px;
+            }
+            .name {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 替换以下图片链接为你的头像 -->
+        <img src="https://via.placeholder.com/150" class="avatar" alt="头像">
+        
+        <h1 class="name">王宏卫</h1>
+        <p class="position">部长</p>
+        <p class="company">腾天慧科</p>
+
+        <ul class="info-list">
+            <li class="info-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:13800138000">188-0221-6688</a>
+            </li>
+            <li class="info-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:zhangsan@company.com">wanghcngwei@tianyiholdings.com</a>
+            </li>
+            <li class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                天津市西青区物华道10号
+            </li>
+            <li class="info-item">
+                <i class="fab fa-weixin"></i>
+                WeChat：18802216688
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
