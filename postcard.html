@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,24 +16,84 @@
         }
 
         body {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            padding: 20px;
+            font-family: 'Microsoft YaHei', sans-serif;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* 名片容器 */
+        /* 背景层 */
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            /* 置于最底层 */
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .background-layer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* 内容容器 */
+        .content-container {
+            position: center;
+            margin-top: 100vh;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* 图片展示区 */
+        .image-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-image {
+            width: 100%;
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .content-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 名片容器保持原有样式 */
         .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 30px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            /* 絕對定位絕對定位 */
+            top: -9%;
+            left: 38%;
+            /* 通过自身宽高反向偏移 */
+            z-index: 1;
+            animation: slideIn 1s ease-out forwards;
         }
 
         /* 头像 */
@@ -43,7 +104,7 @@
             display: block;
             margin: -60px auto 20px;
             border: 3px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* 基础信息 */
@@ -86,23 +147,20 @@
             margin-right: 15px;
             color: #3498db;
         }
-
-        /* 响应式调整 */
-        @media (max-width: 480px) {
-            .card {
-                padding: 25px;
-            }
-            .name {
-                font-size: 22px;
-            }
-        }
     </style>
 </head>
+
 <body>
+    <!-- 背景层 -->
+    <div class="background-layer">
+        <img src="backj.png" alt="背景图">
+    </div>
+
+    <!-- 名片容器 -->
     <div class="card">
         <!-- 替换以下图片链接为你的头像 -->
-        <img src="https://via.placeholder.com/150" class="avatar" alt="头像">
-        
+        <img src="whw.jpg" class="avatar" alt="头像">
+
         <h1 class="name">王宏卫</h1>
         <p class="position">部长</p>
         <p class="company">腾天慧科</p>
@@ -126,5 +184,38 @@
             </li>
         </ul>
     </div>
+
+    <!-- 图片内容容器 -->
+    <div class="content-container">
+        <div class="image-section">
+            <!-- 按数字顺序插入图片 -->
+            <img src="111.png" class="content-image" alt="企业介绍">
+            <img src="22222.png" class="content-image" alt="企业理念">
+            <img src="333333.png" class="content-image" alt="核心优势">
+            <img src="4444444.png" class="content-image" alt="核心优势详情">
+            <img src="555555555.png" class="content-image" alt="产品价值">
+            <img src="666666.png" class="content-image" alt="价值赋能">
+            <img src="777777.png" class="content-image" alt="品牌标识">
+        </div>
+    </div>
+
+    <script>
+        // 滚动动画控制
+        window.addEventListener('scroll', () => {
+            const images = document.querySelectorAll('.content-image');
+            const triggerBottom = window.innerHeight * 0.8;
+
+            images.forEach(img => {
+                const imgTop = img.getBoundingClientRect().top;
+                if (imgTop < triggerBottom) {
+                    img.classList.add('visible');
+                }
+            });
+        });
+
+        // 初始化触发检查
+        window.dispatchEvent(new Event('scroll'));
+    </script>
 </body>
+
 </html>
