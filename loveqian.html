@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph协议标签 新增部分 -->
+    <meta property="og:title" content="范阳阳 | 电子名片" />
+    <meta property="og:description" content="腾天慧科企业成员明信片及联系方式" />
+    <meta property="og:image" content="https://aidenpearce2022.github.io/postcard/777777.jpg" /> 
+    <meta property="og:url" content="https://aidenpearce2022.github.io/postcard/postcard.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="腾天慧科" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <title>电子名片</title>
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 背景层 */
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            /* 置于最底层 */
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .background-layer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* 内容容器 */
+        .content-container {
+            position: center;
+            margin-top: 100vh;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* 图片展示区 */
+        .image-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-image {
+            width: 100%;
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .content-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 名片容器保持原有样式 */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: -9%;
+            z-index: 1;
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        /* 头像 */
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            margin: -60px auto 20px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 基础信息 */
+        .name {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .position {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .company {
+            text-align: center;
+            color: #3498db;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* 详细信息 */
+        .info-list {
+            list-style: none;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .info-item i {
+            width: 30px;
+            text-align: center;
+            margin-right: 15px;
+            color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 背景层 -->
+    <div class="background-layer">
+        <img src="backj.png" alt="背景图">
+    </div>
+
+    <!-- 名片容器 -->
+    <div class="card">
+        <!-- 替换以下图片链接为你的头像 -->
+        <img src="loveqian.jpg" class="avatar" alt="头像">
+
+        <h1 class="name">范阳阳</h1>
+        <p class="position">智能化工程师</p>
+        <p class="company">天一集团-腾天慧科</p>
+
+        <ul class="info-list">
+            <li class="info-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:13800138000">186-3095-8975</a>
+            </li>
+            <li class="info-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:zhangsan@company.com">1511897098@163.com</a>
+            </li>
+            <li class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                天津市西青区物华道10号天一大廈
+            </li>
+            <li class="info-item">
+                <i class="fab fa-weixin"></i>
+                WeChat：akaDoubleYoung
+            </li>
+        </ul>
+    </div>
+
+    <!-- 图片内容容器 -->
+    <div class="content-container">
+        <div class="image-section">
+            <!-- 按数字顺序插入图片 -->
+            <img src="111.png" class="content-image" alt="企业介绍">
+            <img src="22222.png" class="content-image" alt="企业理念">
+            <img src="333333.png" class="content-image" alt="核心优势">
+            <img src="4444444.png" class="content-image" alt="核心优势详情">
+            <img src="555555555.png" class="content-image" alt="产品价值">
+            <img src="666666.png" class="content-image" alt="价值赋能">
+            <img src="777777.png" class="content-image" alt="品牌标识">
+        </div>
+    </div>
+
+    <script>
+        // 滚动动画控制
+        window.addEventListener('scroll', () => {
+            const images = document.querySelectorAll('.content-image');
+            const triggerBottom = window.innerHeight * 0.8;
+
+            images.forEach(img => {
+                const imgTop = img.getBoundingClientRect().top;
+                if (imgTop < triggerBottom) {
+                    img.classList.add('visible');
+                }
+            });
+        });
+
+        // 初始化触发检查
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+
+</html>
